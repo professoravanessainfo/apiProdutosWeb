@@ -1,0 +1,45 @@
+<h5 class="mb-2">Cadastro de Produtos</h5>
+<form>
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome do Produto</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nome"
+      placeholder="Digite o nome do produto"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="preco" class="form-label">Preço</label>
+    <input
+      type="number"
+      class="form-control"
+      id="preco"
+      placeholder="Digite o preço do produto"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="quantidade" class="form-label">Quantidade</label>
+    <input
+      type="number"
+      class="form-control"
+      id="quantidade"
+      placeholder="Digite a quantidade do produto"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="fornecedor" class="form-label">Fornecedor</label>
+    <select class="form-select" id="fornecedor" required>
+      <option selected disabled>Selecione o fornecedor</option>
+      <option value="1">ByteZone Ltda.</option>
+      <option value="2">TechNest S.A.</option>
+      <option value="3">DataDen Informática LTDA</option>
+      <option value="4">Circuit Central Comércio de Eletrônicos</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Cadastrar Produto</button>
+</form>
+
