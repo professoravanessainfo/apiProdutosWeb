@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-produtos-consulta',
@@ -23,7 +24,7 @@ export class ProdutosConsultaComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.httpClient.get('http://localhost:8081/api/produtos')
+    this.httpClient.get(`${environment.apiProdutos}/produtos`)
     .subscribe(
       {
         next: (data) => {

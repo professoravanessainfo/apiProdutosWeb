@@ -1,5 +1,7 @@
 <h5 class="mb-2">Cadastro de Produtos</h5>
-<form>
+<!-- amarrando o forumário a funcao onSubmit-->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
   <div class="mb-3">
     <label for="nome" class="form-label">Nome do Produto</label>
     <input
@@ -7,8 +9,11 @@
       class="form-control"
       id="nome"
       placeholder="Digite o nome do produto"
-      required
+      formControlName="nome"
     />
+    <div class="text-danger" *ngIf="f['nome'].touched && f['nome'].invalid">
+      Por favor, informe o nome do produto com pelo menos 8 caracteres.
+    </div>
   </div>
   <div class="mb-3">
     <label for="preco" class="form-label">Preço</label>
@@ -17,8 +22,11 @@
       class="form-control"
       id="preco"
       placeholder="Digite o preço do produto"
-      required
+      formControlName="preco"
     />
+    <div class="text-danger" *ngIf="f['preco'].touched && f['preco'].invalid">
+      Por favor, informe o preço do produto com valor maior ou igual a 1.
+    </div>
   </div>
   <div class="mb-3">
     <label for="quantidade" class="form-label">Quantidade</label>
@@ -27,19 +35,25 @@
       class="form-control"
       id="quantidade"
       placeholder="Digite a quantidade do produto"
-      required
+      formControlName="quantidade"
     />
+    <div class="text-danger" *ngIf="f['quantidade'].touched && f['quantidade'].invalid">
+      Por favor, informe a quantidade do produto com valor maior ou igual a zero.
+    </div>
   </div>
   <div class="mb-3">
     <label for="fornecedor" class="form-label">Fornecedor</label>
-    <select class="form-select" id="fornecedor" required>
+    <select class="form-select" formControlName="id_Fornecedor">
       <option selected disabled>Selecione o fornecedor</option>
-      <option value="1">ByteZone Ltda.</option>
-      <option value="2">TechNest S.A.</option>
-      <option value="3">DataDen Informática LTDA</option>
-      <option value="4">Circuit Central Comércio de Eletrônicos</option>
+      <option *ngFor="let f of fornecedores" value="{{f.id}}">
+        {{f.razaoSocial | uppercase}} (CNPJ: {{f.cnpj}})
+      </option>
     </select>
+    <div class="text-danger" *ngIf="f['id_Fornecedor'].touched && f['id_Fornecedor'].invalid">
+      Por favor, informe o fornecedor desejado para o produto.
+    </div>
   </div>
-  <button type="submit" class="btn btn-success">Cadastrar Produto</button>
+  <!--botao desabilitado enquanto nao estiver preencgido de maneira correta-->
+  <button type="submit" class="btn btn-success" [disabled]="form.invalid">Cadastrar Produto</button>
 </form>
 
